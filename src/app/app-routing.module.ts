@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { DepartmentComponent } from './pages/department/department.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
-import { SystemMenu } from './system-menu';
-import { SystemMenuService } from './service/system-menu.service';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
