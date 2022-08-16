@@ -1,1 +1,84 @@
-<router-outlet></router-outlet>
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>AI Admin</h1>
+      </a>
+    </div>
+    <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+      <ng-template #menuTpl let-menus>
+        <ng-container *ngFor="let menu of menus">
+          <li
+            *ngIf="!menu.children"
+            nz-menu-item
+            nzMatchRouter
+            [nzPaddingLeft]="menu.level * 24"
+          >
+            <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+            <a class="menu-btn" [routerLink]="['/', menu.path]">{{ menu.title }}</a>
+          </li>
+          <li
+            *ngIf="menu.children"
+            nz-submenu
+            [nzPaddingLeft]="menu.level * 24"
+            [nzTitle]="menu.title"
+            [nzIcon]="menu.icon"
+            [nzDisabled]="menu.disabled"
+          >
+            <ul>
+              <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
+            </ul>
+          </li>
+        </ng-container>
+      </ng-template>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+        <span class="header-trigger" (click)="toggleTheme()">
+          <i class="trigger" nz-icon nzType="skin" nzTheme="outline"></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <nz-tabset
+          [(nzSelectedIndex)]="activatedMenuIndex"
+          nzType="card"
+        >
+          <nz-tab
+            *ngFor="let tab of tabs"
+            [nzTitle]="titleTemplate"
+            (nzSelect)="toggleTab(tab.path)">
+            <ng-template #titleTemplate>
+              <div>
+                {{ tab.title }}
+                <i
+                  class="tab-remove-btn"
+                  nz-icon nzType="close"
+                  nzTheme="outline"
+                  (click)="closeTab(tab.path)"
+                ></i>
+              </div>
+            </ng-template>
+          </nz-tab>
+        </nz-tabset>
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
