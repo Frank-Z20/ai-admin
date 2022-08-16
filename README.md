@@ -16,4 +16,7 @@ Ai-Admin是使用Angular开发的快速开发平台，我们注重极致的用�
 ### 开源共建
 欢迎各位大牛提供各种建议，代码编写不合理欢迎指正。
 
+### 系统截图
+
+![layout](./screenshots/layout.jpg)
 
