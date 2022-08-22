@@ -11,6 +11,9 @@ Ai-Admin是使用Angular开发的快速开发平台，我们注重极致的用�
 | ng-zorro-antd           | 13.4.0   |
 
 ### 时间线
+2022-08-22 登录模块实现，添加路由守卫，未登录禁止跳转
+
+
 2022-08-16 框架搭建
 
 ### 开源共建
@@ -19,4 +22,6 @@ Ai-Admin是使用Angular开发的快速开发平台，我们注重极致的用�
 ### 系统截图
 
 ![layout](./screenshots/layout.jpg)
+
+![login](./screenshots/login.jpg)
 
