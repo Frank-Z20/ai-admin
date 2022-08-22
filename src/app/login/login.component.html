@@ -1,0 +1,58 @@
+<div class="login_main">
+  <div class="login_box">
+    <div class="left">
+      <span class="logo_container">
+        <img data-v-dfb96b82="" src="../assets/icon/logo.svg" alt="logo" class="logo">
+      </span>
+      <span class="title">Ai-Admin 快速开发平台</span>
+      <span class="about">Ai-Admin是一个基于Angular的快速开发平台，UI框架采用Ant Design的ng-zorro</span>
+    </div>
+    <div class="right">
+      <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <div class="form-header">
+          <span>系统登录</span>
+        </div>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="请输入帐号!">
+            <nz-input-group nzPrefixIcon="user" nzSize="large">
+              <input type="text" nz-input formControlName="userName" placeholder="帐号" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="请输入密码!">
+            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzSize="large">
+              <input
+                nz-input
+                formControlName="password"
+                [type]="passwordVisible ? 'text' : 'password'"
+                placeholder="密码" 
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <i nz-icon class="toggle-pwd-btn" [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <div nz-row class="login-form-margin">
+          <div nz-col [nzSpan]="12">
+            <label nz-checkbox formControlName="remember">
+              <span>记住密码</span>
+            </label>
+          </div>
+          <div nz-col [nzSpan]="12">
+            <a class="login-form-forgot">忘记密码</a>
+          </div>
+        </div>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" nzSize="large">登&nbsp;&nbsp;录</button>
+      </form>
+      <nz-space [nzSize]="12">
+        <span *nzSpaceItem class="space-item other-login">其它登录方式</span>
+        <span *nzSpaceItem title="钉钉登录" class="space-item icon-item dingding"><i nz-icon nzType="dingding" nzTheme="outline"></i></span>
+        <span *nzSpaceItem title="微信登录" class="space-item icon-item wechat"><i nz-icon nzType="wechat" nzTheme="outline"></i></span>
+        <span *nzSpaceItem title="QQ登录" class="space-item icon-item qq"><i nz-icon nzType="qq" nzTheme="outline"></i></span>
+        <span *nzSpaceItem title="短信验证码登录" class="space-item icon-item mobile"><i nz-icon nzType="mobile" nzTheme="fill"></i></span>
+      </nz-space>
+    </div>
+  </div>
+</div>
