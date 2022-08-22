@@ -20,8 +20,10 @@ Ai-Admin是使用Angular开发的快速开发平台，我们注重极致的用�
 欢迎各位大牛提供各种建议，代码编写不合理欢迎指正。
 
 ### 系统截图
+UI框架：
 
 ![layout](./screenshots/layout.jpg)
 
+登录页：
 ![login](./screenshots/login.jpg)
 
